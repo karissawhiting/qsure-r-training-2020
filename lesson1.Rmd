@@ -409,6 +409,7 @@ tmp <- mpg %>%
   summarize(avg_cty = mean(cty)) %>%
   ungroup()
 tmp
+
 tmp2 <- pivot_wider(tmp,names_from = cyl,values_from = avg_cty)
 tmp2
 
@@ -416,6 +417,8 @@ tmp3 <- pivot_longer(tmp2, cols = c( '4','5','6','8'), values_to = 'avg_cty',
                      names_to = 'cyl',
                      values_drop_na = TRUE)
 tmp3
+
+
 ```
 
 
