@@ -53,9 +53,6 @@ setdiff(outcome_raw$individual_id, variables$id)
 setdiff(variables$id, outcome_raw$individual_id)
 
 # TODO- Make a new dataframe called `df` and join the `variables` data frame to the `outcome_raw` data frame using a left_join()
-df <-
-  variables %>%
-  left_join(outcome_raw, by = c("id" = "individual_id"))
   
 
 # Check for dupes --------------------
@@ -80,8 +77,7 @@ df <- df %>%
 # Check Variables -------------------
 
 # TODO - what data type is each variable?
-str(df)
-glimpse(df)
+
 
 # check columns that should be numeric but are being coerced 
 df %>%
@@ -112,11 +108,9 @@ df %>%
   map(., ~check_coercion(.x))
 
 # TODO- now that we've checked this, we can safely convert these cols using as.numeric()
-df <- df %>%
-  mutate(stabilized_glucose = as.numeric(stabilized_glucose), 
-         hdl = as.numeric(hdl), 
-         ratio_chol_hdl = as.numeric(ratio_chol_hdl), 
-         waist = as.numeric(waist))
+
+
+
 
 glimpse(df)
 str(df)
@@ -147,10 +141,9 @@ df %>%
 
 # From the above, I can already tell that capitalizations are going to be a problem. 
 # TODO - Let's mutate location, gender and frame to lowercase using tolower(). 
-df <- df %>%
-  mutate(location = tolower(location), 
-         gender = tolower(gender), 
-         frame = tolower(frame))
+
+
+
 
 df %>%
   group_by(gender) %>%
